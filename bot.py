@@ -31,22 +31,20 @@ async def on_message(msg):
         return
 
     # Bot ignore messages from special roles
-    if not (
+    if (
         "Core-Team" in [role.name for role in msg.author.roles]
         or "Support-Team" in [role.name for role in msg.author.roles]
         or "Contributors" in [role.name for role in msg.author.roles]
+        or "Team" in [role.name for role in msg.author.roles]
     ):
-        message = f"{data['default']}"
-        await client.send_message(msg.channel, message)
         return
 
-    args = msg.content.split()
-    for check in args:
-        for link in data["links"]:
-            if check == link:
-                return
-        if len(check) >= 30 and check[:29] == "https://discordapp.com/invite/":
-            await client.delete_message(msg)
+    for link in data["links"]:
+        if link in msg.content:
+            return
+    if "https://discordapp.com/invite/" in msg.content:
+        await client.delete_message(msg)
+        return
 
 
 @client.event
