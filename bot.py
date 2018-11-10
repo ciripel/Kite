@@ -2,6 +2,7 @@
 # Work with Python 3.6
 
 import json
+
 import discord
 from discord.ext.commands import Bot
 
@@ -44,12 +45,13 @@ async def on_message(msg):
         for link in data["links"]:
             if check == link:
                 return
-        if (len(check) >= 30 and check[:29] == "https://discordapp.com/invite/"):
+        if len(check) >= 30 and check[:29] == "https://discordapp.com/invite/":
             await client.delete_message(msg)
 
 
 @client.event
 async def on_ready():
     print(f"Logged in as: {client.user.name} {{{client.user.id}}}")
+
 
 client.run(TOKEN)
