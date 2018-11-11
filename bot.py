@@ -44,7 +44,6 @@ async def on_message(msg):
             return
     if "https://discordapp.com/invite/" in msg.content:
         await client.delete_message(msg)
-        return
 
 
 @client.event
