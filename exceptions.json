@@ -1,4 +1,9 @@
 {
-  "links":["https://discordapp.com/invite/KWC8wtT",
-           "https://discordapp.com/invite/H3KXjM4"]
+  "banned_words":["https://discordapp.com/invite/"],
+  "except_roles":["Core-Team",
+                  "Support-Team",
+                  "Contributors",
+                  "Team"],
+  "except_links":["https://discordapp.com/invite/KWC8wtT",
+                  "https://discordapp.com/invite/H3KXjM4"]
 }
