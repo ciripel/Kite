@@ -1,5 +1,5 @@
-#!/usr/bin/env python3.6
-# Work with Python 3.6
+#!/usr/bin/env python3.8
+# Work with Python 3.8
 
 import json
 
@@ -36,14 +36,14 @@ async def on_message(msg):
             return
     # BOT is ignoring exceptions
     # This is usefull if the exception is containing the forbidden word (expresion)
-    for ex_link in data["except_links"]:
-        if ex_link in msg.content:
+    for ex_link in data["except_words"]:
+        if ex_link in msg.content.lower():
             return
     # Bot is parsing all the words (expresions) list and check if the message is
     # containing any of them and delete the messages that contain them
     for ban_word in data["banned_words"]:
-        if ban_word in msg.content:
-            await client.delete_message(msg)
+        if ban_word in msg.content.lower():
+            await msg.delete()
             # return is used here to not have double words and call a delete_message(deleted_message)
             return
 
